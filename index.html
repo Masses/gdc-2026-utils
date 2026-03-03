@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0064)file:///Users/bmccaffrey/Downloads/GDC_2026_Master_Schedule.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>GDC 2026 Master Schedule</title>
   <style>
 
@@ -23,19 +23,112 @@ vertical-align: middle;
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
   <style type="text/css">@page { size: letter; margin: 0.6in 0.5in; }
-body { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 10px; line-height: 1.45; color: #1a1a1a; }
-h1 { font-size: 20px; color: #111; border-bottom: 3px solid #333; padding-bottom: 8px; margin-top: 30px; }
-h2 { font-size: 16px; color: #1a1a1a; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 25px; }
-h3 { font-size: 13px; color: #333; margin-top: 18px; margin-bottom: 6px; }
-table { border-collapse: collapse; width: 100%; margin: 8px 0 16px 0; font-size: 9px; }
-th { background-color: #2c3e50; color: white; font-weight: 600; text-align: left; padding: 6px 8px; font-size: 9px; border: 1px solid #2c3e50; }
-td { padding: 5px 8px; border: 1px solid #ddd; vertical-align: top; }
+body { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #1a1a1a; max-width: 100%; padding: 0 8px; }
+h1 { font-size: 24px; color: #111; border-bottom: 3px solid #333; padding-bottom: 8px; margin-top: 30px; }
+h2 { font-size: 20px; color: #1a1a1a; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 25px; }
+h3 { font-size: 16px; color: #333; margin-top: 18px; margin-bottom: 6px; }
+table { border-collapse: collapse; width: 100%; margin: 8px 0 16px 0; font-size: 13px; }
+th { background-color: #2c3e50; color: white; font-weight: 600; text-align: left; padding: 8px 10px; font-size: 13px; border: 1px solid #2c3e50; }
+td { padding: 7px 10px; border: 1px solid #ddd; vertical-align: top; }
 tr:nth-child(even) { background-color: #f8f9fa; }
 strong { color: #c0392b; }
-blockquote { border-left: 4px solid #3498db; padding: 8px 12px; margin: 10px 0; background-color: #eaf2f8; font-style: italic; font-size: 10px; }
+blockquote { border-left: 4px solid #3498db; padding: 10px 14px; margin: 12px 0; background-color: #eaf2f8; font-style: italic; font-size: 14px; }
 blockquote strong { color: #2c3e50; }
 hr { border: none; border-top: 2px solid #ddd; margin: 20px 0; }
-code { background-color: #f0f0f0; padding: 1px 4px; border-radius: 3px; font-family: "Menlo", monospace; font-size: 9px; }
+code { background-color: #f0f0f0; padding: 2px 5px; border-radius: 3px; font-family: "Menlo", monospace; font-size: 12px; }
+ul { padding-left: 20px; }
+li { margin: 4px 0; font-size: 14px; }
+@media (max-width: 768px) {
+    body { font-size: 15px; padding: 0 4px; }
+    table { font-size: 13px; }
+    th, td { padding: 6px 6px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+}
+</style>
+
+<style>
+#filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    padding: 12px 0;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+#filter-bar .filter-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-right: 4px;
+}
+.filter-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+    border: 2px solid #ccc;
+    border-radius: 16px;
+    cursor: pointer;
+    background: #fff;
+    color: #333;
+    font-weight: 600;
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    transition: all 0.15s;
+}
+.filter-btn:hover { background: #f0f0f0; }
+.filter-btn.active-ts    { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+.filter-btn.active-ugc   { background: #2ecc71; color: #fff; border-color: #2ecc71; }
+.filter-btn.active-net   { background: #3498db; color: #fff; border-color: #3498db; }
+.filter-btn.active-rt    { background: #9b59b6; color: #fff; border-color: #9b59b6; }
+.filter-btn.active-biz   { background: #f39c12; color: #fff; border-color: #f39c12; }
+.filter-btn.active-llm   { background: #1abc9c; color: #fff; border-color: #1abc9c; }
+.filter-btn.active-tools { background: #e67e22; color: #fff; border-color: #e67e22; }
+.filter-btn.active-all   { background: #2c3e50; color: #fff; border-color: #2c3e50; }
+
+#mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+    background: #f0f0f0;
+    border-radius: 16px;
+    padding: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+#mode-toggle .mode-option {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 14px;
+    color: #888;
+    transition: all 0.15s;
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#mode-toggle .mode-option.active-mode {
+    background: #2c3e50;
+    color: #fff;
+}
+#mode-toggle .mode-option:hover:not(.active-mode) {
+    color: #333;
+}
+
+#filter-count {
+    font-size: 13px;
+    color: #888;
+    margin-left: 8px;
+}
+tr.hidden-row { display: none; }
+
+@media (max-width: 768px) {
+    .filter-btn { font-size: 14px; padding: 8px 14px; }
+    #filter-bar .filter-label { font-size: 15px; }
+    #filter-count { font-size: 14px; }
+    #mode-toggle .mode-option { font-size: 13px; padding: 6px 14px; }
+}
 </style>
 </head>
 <body>
@@ -51,16 +144,38 @@ tools, AI content, platforms (systems your product integrates with) -
 <strong>[NET]</strong> — Pure Networking Event (primary purpose is
 meeting people) - <strong>[RT]</strong> — Roundtable/Forum (interactive
 discussion, high networking value) - <strong>[BIZ]</strong> — Business
-Intelligence (market trends, competitive intel, sales positioning)</p>
-<hr>
+Intelligence (market trends, competitive intel, sales positioning) -
+<strong>[LLM]</strong> — LLM/GenAI for Player Engagement or Content
+Generation (conversational AI, AI NPCs, AI-generated worlds/assets,
+AI-assisted player creation) - <strong>[TOOLS]</strong> — Engine Tooling
+/ Plugin Development (building plugins, SDKs, pipeline tools for Unity,
+Unreal, or game engines generally)</p>
+<hr />
+<div id="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-btn active-all" data-tag="all" onclick="toggleFilter(this)">Show All</button>
+    <button class="filter-btn" data-tag="T&amp;S" onclick="toggleFilter(this)">T&amp;S</button>
+    <button class="filter-btn" data-tag="UGC" onclick="toggleFilter(this)">UGC</button>
+    <button class="filter-btn" data-tag="LLM" onclick="toggleFilter(this)">LLM</button>
+    <button class="filter-btn" data-tag="TOOLS" onclick="toggleFilter(this)">TOOLS</button>
+    <button class="filter-btn" data-tag="NET" onclick="toggleFilter(this)">NET</button>
+    <button class="filter-btn" data-tag="RT" onclick="toggleFilter(this)">RT</button>
+    <button class="filter-btn" data-tag="BIZ" onclick="toggleFilter(this)">BIZ</button>
+    <div id="mode-toggle" onclick="toggleMode()">
+        <span class="mode-option active-mode" data-mode="or">OR</span>
+        <span class="mode-option" data-mode="and">AND</span>
+    </div>
+    <span id="filter-count"></span>
+</div>
+
 <h2 id="monday-march-9">Monday, March 9</h2>
 <table>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 20%">
-<col style="width: 12%">
-<col style="width: 35%">
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
 </colgroup>
 <thead>
 <tr>
@@ -82,12 +197,28 @@ Play</td>
 current moderation falls short.</td>
 </tr>
 <tr>
+<td>10:10-11:10</td>
+<td>Hitting 60 FPS in UE5 and Keeping It There</td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>Epic Games. UE5 performance tools — monitoring, diagnosing,
+optimization workflows.</td>
+</tr>
+<tr>
 <td>10:30-12:30</td>
 <td><strong>Thriving Players Workshop</strong></td>
 <td>3011, West Hall</td>
 <td>[T&amp;S]</td>
 <td>Blizzard, Riot Games, Thriving in Games Group. Hands-on workshop
 designing prosocial systems.</td>
+</tr>
+<tr>
+<td>10:30-11:30</td>
+<td><strong>Tools Roundtable Day 1: Engineering</strong></td>
+<td>314, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>Nvidia. Tools programming, testing, deployment, frameworks,
+extensibility, plugins, pipelines.</td>
 </tr>
 <tr>
 <td>10:30-11:30</td>
@@ -113,6 +244,14 @@ filters.</td>
 block.</td>
 </tr>
 <tr>
+<td>11:30-12:30</td>
+<td>Tuning UE5 for Mobile Deployment</td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>Epic Games. Device profiles, scalability systems, quality presets,
+mobile-specific UE5 tooling.</td>
+</tr>
+<tr>
 <td>11:20-11:50</td>
 <td>Player-Assisted Monetization: Curating as Luxury Fashion</td>
 <td>2024, West Hall</td>
@@ -121,9 +260,17 @@ block.</td>
 </tr>
 <tr>
 <td>11:50-12:20</td>
+<td>Etudes and Actors: Owlcat’s Tooling for Branched Narrative</td>
+<td>2010, West Hall</td>
+<td>[TOOLS]</td>
+<td>Owlcat Games. Custom tooling system demonstrated in both Unity and
+Unreal.</td>
+</tr>
+<tr>
+<td>11:50-12:20</td>
 <td>Generative Recommender Post-Trained by RL</td>
 <td>3004, West Hall</td>
-<td>[UGC]</td>
+<td>[UGC] [LLM]</td>
 <td>Lightspeed Studios (Tencent). LLM-based recommendation for UGC
 discovery and social.</td>
 </tr>
@@ -144,6 +291,16 @@ from Community Safety</strong></td>
 <td>Modulate, Discord, GamerSafer, TIGG. Trust &amp; Safety Triforce:
 Policy, Tooling, Education. Real examples from Call of Duty, Minecraft,
 Discord. <strong>Your direct competitor is on this panel.</strong></td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td><strong>The Future of Playable Worlds with Google
+DeepMind</strong></td>
+<td>2020, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Google Cloud, DeepMind. SIMA and Genie models. AI agents in game
+worlds, automated environment generation, infinitely extensible
+gameplay.</td>
 </tr>
 <tr>
 <td>1:30-2:00</td>
@@ -170,12 +327,45 @@ obligations.</td>
 <td>Player behavior data — adjacent to moderation analytics.</td>
 </tr>
 <tr>
+<td>1:50-2:50</td>
+<td>Using Telemetry (the Right Way) for Game Tools</td>
+<td>3005, West Hall</td>
+<td>[TOOLS]</td>
+<td>Ubisoft. Adding telemetry to dev tools — tracking UX improvements
+over time.</td>
+</tr>
+<tr>
 <td>2:00-2:30</td>
 <td>Trust, Attest, Server-Authoritative: Modern iOS Anti-Cheat</td>
 <td>2009, West Hall</td>
 <td>[UGC]</td>
 <td>Tencent. Server-authoritative design, anti-cheat for
 multiplayer.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td>Delta Force Character Production Pipeline</td>
+<td>2024, West Hall</td>
+<td>[TOOLS]</td>
+<td>Tencent. Tools for PC-to-mobile asset conversion, quality control,
+optimization pipeline.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td><strong>Beyond the Build: Distributed Build
+Acceleration</strong></td>
+<td>2000, West Hall</td>
+<td>[TOOLS]</td>
+<td>Incredibuild. Integration into UE, Unity, and other editors. CI/CD
+build tools.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td><strong>JetBrains Rider + TeamCity for Games</strong></td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>JetBrains. Engine-specific inspections for Unity + Unreal. CI with
+both engines + Godot.</td>
 </tr>
 <tr>
 <td>2:20-2:50</td>
@@ -212,17 +402,26 @@ optimization for multiplayer UGC.</td>
 </tr>
 <tr>
 <td>3:10-4:10</td>
+<td>AI Models for 2D Generation</td>
+<td>3004, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Ubisoft La Forge. GenAI for concept art, textures, game items.
+Fine-tuned LoRA models trainable with 30 images.</td>
+</tr>
+<tr>
+<td>3:10-4:10</td>
 <td>Game AI Roundtable Day 1</td>
 <td>308, South Hall</td>
-<td>[RT] [UGC]</td>
-<td>AI in games — moderation is an AI use case.</td>
+<td>[RT] [UGC] [LLM]</td>
+<td>AI in games including ML and LLM approaches — moderation is an AI
+use case.</td>
 </tr>
 <tr>
 <td>3:40-4:40</td>
 <td><strong>Playing with the Shoggoth: Safety in Games with Generative
 AI</strong></td>
 <td>2009, West Hall</td>
-<td>[T&amp;S] [UGC]</td>
+<td>[T&amp;S] [UGC] [LLM]</td>
 <td>Tencent. How live LLM interactions differ from standard UGC.
 Adversarial player-AI interactions. <strong>The next frontier for
 content moderation.</strong></td>
@@ -241,9 +440,9 @@ pitch.</strong></td>
 <td>3:40-4:40</td>
 <td>Capcom’s AI Revolution in Game Development</td>
 <td>2020, West Hall</td>
-<td>[UGC]</td>
-<td>Google Cloud, Capcom. “Living Games” that react to player behavior
-via GenAI.</td>
+<td>[UGC] [LLM]</td>
+<td>Google Cloud, Capcom. “Living Games” — GenAI closes loop between
+player telemetry and real-time content creation.</td>
 </tr>
 <tr>
 <td>4:30-5:00</td>
@@ -293,15 +492,15 @@ T&amp;S sessions are there (10:10, 12:45, 3:40, 5:00). Camp out. The Dev
 Trading Card Mixer at 4:30 is hosted by the same T&amp;S community —
 attend that for networking.</p>
 </blockquote>
-<hr>
+<hr />
 <h2 id="tuesday-march-10">Tuesday, March 10</h2>
 <table>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 20%">
-<col style="width: 12%">
-<col style="width: 35%">
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
 </colgroup>
 <thead>
 <tr>
@@ -313,6 +512,55 @@ attend that for networking.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>10:10-11:10</td>
+<td>AI-Driven Logic-Heavy 3D Game Development</td>
+<td>3014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. LLMs generating game prototypes, core logic code, UI, and
+3D scenes from simple requirements.</td>
+</tr>
+<tr>
+<td>10:10-11:10</td>
+<td><strong>Developing Large Procedural Systems in UE</strong></td>
+<td>3009, West Hall</td>
+<td>[TOOLS]</td>
+<td>Epic Games. Senior Tools Programmer on PCG Biome Core, runtime vs
+static serialization, performance.</td>
+</tr>
+<tr>
+<td>10:10-11:10</td>
+<td>Neural Graphics SDK + Unreal Engine Plugins</td>
+<td>2011, West Hall</td>
+<td>[TOOLS] [LLM]</td>
+<td>Arm. Building UE plugins on the Neural Graphics SDK. Real content
+workflows.</td>
+</tr>
+<tr>
+<td>10:30-11:00</td>
+<td><strong>Build ‘Living Games’ with AI</strong></td>
+<td>Blue Shield of CA Theater, YBCA</td>
+<td>[UGC] [LLM] [BIZ]</td>
+<td>Google Cloud (Luminaries). GenAI closes loop between player behavior
+and content creation. Scalable, responsive, endlessly replayable
+experiences.</td>
+</tr>
+<tr>
+<td>10:30-11:30</td>
+<td><strong>Tool Design Roundtable Day 1</strong></td>
+<td>306, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>UX of toolsets — in-house and external. For tool programmers,
+designers, tech artists.</td>
+</tr>
+<tr>
+<td>10:30-11:30</td>
+<td><strong>Technical Artists Roundtable Day 1</strong></td>
+<td>314, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>Tool creation, scripting, shader creation, content pipelines, asset
+tracking. 20th year.</td>
+</tr>
 <tr>
 <td>10:30-11:30</td>
 <td>Making Games for Kids Roundtable</td>
@@ -339,11 +587,44 @@ communication.</td>
 </tr>
 <tr>
 <td>11:30-12:30</td>
-<td>Cross-Platform Isn’t a Checkbox: Designing for Fortnite</td>
+<td><strong>Cross-Platform for Fortnite / UEFN</strong></td>
 <td>3009, West Hall</td>
-<td>[UGC]</td>
-<td>Epic Games. UEFN — Fortnite’s UGC creation and publishing
-platform.</td>
+<td>[UGC] [TOOLS]</td>
+<td>Epic Games. UEFN tooling — profiling, world partitioning, modular
+design, systemic gameplay.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>Performance Tuning + Upscaling in Unity</strong></td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>Arm. Profiling with Arm Performance Studio. Integrating DLSS/FSR/ASR
+plugins into Unity.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td>UE5 Mobile on Snapdragon</td>
+<td>2024, West Hall</td>
+<td>[TOOLS]</td>
+<td>Qualcomm, Perfect World. Integrating Adreno Tile Memory Heap into
+UE5 rendering pipeline.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td>IntelliScene: Multi-Agent for Reasoning-Driven Game Scene
+Layout</td>
+<td>3014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. Multi-agent LLM system generating 3D scene layouts via
+Chain-of-Thought reasoning.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td>VR 401: Accelerating Quest Dev with Agentic Workflows</td>
+<td>2020, West Hall</td>
+<td>[UGC] [LLM] [TOOLS]</td>
+<td>Meta + <strong>Unity Technologies</strong> speaker. AI-assisted
+development and agentic workflows.</td>
 </tr>
 <tr>
 <td>11:30-12:30</td>
@@ -351,6 +632,14 @@ platform.</td>
 <td>2000, West Hall</td>
 <td>[UGC]</td>
 <td>NEXUS. Player-owned assets, player-driven economies.</td>
+</tr>
+<tr>
+<td>11:50-12:20</td>
+<td>Build Faster, Iterate More: AI-Powered Prototyping with MCP</td>
+<td>3004, West Hall</td>
+<td>[UGC] [LLM] [TOOLS]</td>
+<td>Roblox. MCP as universal middleware bridging LLMs and game engine
+functionality. For tools programmers and build engineers.</td>
 </tr>
 <tr>
 <td>11:50-12:20</td>
@@ -373,16 +662,25 @@ cheating and detection in multiplayer.</td>
 <td>12:45-1:45</td>
 <td><strong>Let the Engine Understand You: AI Scene Editor</strong></td>
 <td>3014, West Hall</td>
-<td>[UGC]</td>
-<td>Tencent Games. Players craft worlds via voice commands. LLM + MCP.
-Targets UGC ecosystems.</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. Players craft worlds via voice commands + LLM + MCP. No
+skills required. Targets UGC ecosystems.</td>
 </tr>
 <tr>
 <td>12:45-1:45</td>
 <td>Snapdragon Game AI SDK</td>
 <td>2024, West Hall</td>
-<td>[UGC]</td>
-<td>Qualcomm. ASR, LLMs, TTS for player-AI voice/text interaction.</td>
+<td>[UGC] [LLM] [TOOLS]</td>
+<td>Qualcomm. SDK for on-device AI inference — ASR + LLM + TTS for NPC
+interactions. Integration guidance.</td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td>Insight to Action: Innovating Ops with AI</td>
+<td>3009, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Microsoft, Valorem Reply. Agentic AI transforms live telemetry and
+player sentiment into faster fixes.</td>
 </tr>
 <tr>
 <td>1:50-3:50</td>
@@ -390,6 +688,14 @@ Targets UGC ecosystems.</td>
 <td>216, South Hall</td>
 <td>[NET]</td>
 <td>Structured 1-on-1 mentoring. Pre-register.</td>
+</tr>
+<tr>
+<td>1:50-2:50</td>
+<td>Shaders 501: Compute for Tech Artists</td>
+<td>3002, West Hall</td>
+<td>[TOOLS]</td>
+<td>Epic Games engineer. Building advanced compute shader features for
+game engines.</td>
 </tr>
 <tr>
 <td>1:50-2:50</td>
@@ -409,16 +715,33 @@ Targets UGC ecosystems.</td>
 <td>2:00-2:30</td>
 <td>Snapdragon + Honor of Kings: On-Device AI ASR Voice</td>
 <td>2024, West Hall</td>
-<td>[UGC]</td>
-<td>Tencent, Qualcomm. Real-time speech-to-text for in-game voice
-chat.</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent, Qualcomm. On-device speech AI for human-AI interaction in
+games.</td>
 </tr>
 <tr>
 <td>2:00-2:30</td>
 <td>Proving AI Can Produce Results: Helpshift Player Engagement</td>
-<td>—</td>
-<td>[T&amp;S]</td>
-<td>AI-powered player support — adjacent to moderation.</td>
+<td>2000, West Hall</td>
+<td>[T&amp;S] [LLM]</td>
+<td>Keywords Studios. “First player-centric AI agent” for proactive
+player engagement.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td><strong>Agentic LiveOps: From Concept to Production</strong></td>
+<td>3001, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>AWS. Agentic AI for player segmentation and automated game
+operations via Amazon Bedrock.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td>The Hidden Ones: Real-Time AI Generation of Kung Fu Motions</td>
+<td>3014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. AI-generated combat animations in real-time — players see
+AI-generated motion.</td>
 </tr>
 <tr>
 <td>2:50-3:20</td>
@@ -434,18 +757,26 @@ from indie to AAA. Scalable moderation for social spaces.
 <td>2:50-3:20</td>
 <td><strong>Real-Time Speech AI for Games with Tencent</strong></td>
 <td>3001, West Hall</td>
-<td>[UGC] [T&amp;S]</td>
-<td>Tencent, AWS. End-to-end speech AI: comms moderation, multilingual
-AI, safety for noisy multiplayer audio. <strong>Your integration points
-are here.</strong></td>
+<td>[UGC] [T&amp;S] [LLM]</td>
+<td>Tencent, AWS. AI teammate with natural speech + multilingual live
+translation + comms moderation. <strong>Your integration points are
+here.</strong></td>
 </tr>
 <tr>
 <td>2:50-3:20</td>
 <td>Augmenting NPCs with LLMs</td>
 <td>2011, West Hall</td>
-<td>[UGC]</td>
-<td>Arm, NC State. LLM-augmented NPCs — players generate content through
-conversational AI.</td>
+<td>[UGC] [LLM]</td>
+<td>Arm, NC State. LLM NPCs that converse, plan, act. On-device
+inference, structured generation for in-engine actions.</td>
+</tr>
+<tr>
+<td>2:50-3:20</td>
+<td>Unleash Artistic Creativity: Tencent’s AIGC Tools</td>
+<td>3014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. AIGC for 3D character generation, auto-retopology,
+auto-rigging — player-facing assets.</td>
 </tr>
 <tr>
 <td>3:40-4:40</td>
@@ -457,13 +788,29 @@ Ecosystem</strong></td>
 adjacent — same buyer, same budget.</td>
 </tr>
 <tr>
+<td>3:40-4:10</td>
+<td><strong>In the Era of AI: Tencent Games’ Evolution</strong></td>
+<td>Blue Shield of CA Theater, YBCA</td>
+<td>[UGC] [LLM] [BIZ]</td>
+<td>Tencent (Luminaries). Emotionally responsive NPCs and natural
+interaction as new paradigm.</td>
+</tr>
+<tr>
 <td>3:40-4:40</td>
 <td><strong>Turning Conversation into Gameplay: Courtroom Chaos with
 Snoop Dogg</strong></td>
 <td>3001, West Hall</td>
-<td>[UGC]</td>
-<td>AWS, Amber. Game built around freeform spoken dialogue with AI.
-Players generate content through speech.</td>
+<td>[UGC] [LLM]</td>
+<td>AWS, Amber. Entire game built on freeform spoken dialogue with AI
+characters. Design framework for conversational AI gameplay.</td>
+</tr>
+<tr>
+<td>3:40-4:40</td>
+<td>AI Bottlenecks &amp; Solutions in Massive Game Engineering</td>
+<td>3014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent. Differentiable AI addressing LLM limitations (context,
+hallucinations) for large-scale game systems.</td>
 </tr>
 <tr>
 <td>3:40-4:40</td>
@@ -509,17 +856,36 @@ buying driver for moderation tools.</td>
 <td><strong>Boosting Game Retention with Voice, AI &amp;
 Acceleration</strong></td>
 <td>3014, West Hall</td>
-<td>[UGC] [T&amp;S]</td>
-<td>Tencent (GMES). Platform bundling voice chat + security + AI. Free
-tier for early-stage teams. <strong>Potential partner or
+<td>[UGC] [T&amp;S] [LLM]</td>
+<td>Tencent (GMES). Voice AI platform bundling voice chat + security +
+AI. Free tier for early-stage teams. <strong>Potential partner or
 competitor.</strong></td>
+</tr>
+<tr>
+<td>5:00-6:00</td>
+<td><strong>Agentic Live Ops: Turning Player Data into Actionable
+Insights</strong></td>
+<td>3001, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>AWS. Conversational analytics via LLM agents. Scaling player
+segmentation from 100 to 1,000+ segments.</td>
+</tr>
+<tr>
+<td>5:00-6:00</td>
+<td><strong>Early Access to Emerging Technology: SDK/Plugin
+Integration</strong></td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>Arm + Enduring Games. Lifecycle of integrating SDKs, plugins, and
+engine integrations into Unreal Engine projects.</td>
 </tr>
 <tr>
 <td>5:30-6:00</td>
 <td>The AI Design Stack: Agents, 3D Generation, and Beyond</td>
 <td>3014, West Hall</td>
-<td>[UGC]</td>
-<td>Tencent Cloud. Agentic AI + 3D generation pipeline.</td>
+<td>[UGC] [LLM]</td>
+<td>Tencent Cloud. Agentic AI + 3D generation pipeline for game
+design.</td>
 </tr>
 <tr>
 <td>6:30-8:00</td>
@@ -545,15 +911,15 @@ Social Arenas) are specifically designed for community professionals —
 your buyers. The IGDA Children and Safety Roundtable at 4:30 is
 essential.</p>
 </blockquote>
-<hr>
+<hr />
 <h2 id="wednesday-march-11">Wednesday, March 11</h2>
 <table>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 20%">
-<col style="width: 12%">
-<col style="width: 35%">
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
 </colgroup>
 <thead>
 <tr>
@@ -570,9 +936,9 @@ essential.</p>
 <td><strong>Building a Co-Playable Character: PUBG Ally (NVIDIA
 ACE)</strong></td>
 <td>3020, West Hall</td>
-<td>[UGC]</td>
-<td>KRAFTON, NVIDIA. AI companion with full voice pipeline (STT → SLM →
-TTS). Players interact via voice in multiplayer.</td>
+<td>[UGC] [LLM]</td>
+<td>KRAFTON, NVIDIA. AI companion with full STT→SLM→TTS pipeline. Talks,
+jokes, reacts to player commands in multiplayer.</td>
 </tr>
 <tr>
 <td>10:30-11:00</td>
@@ -589,6 +955,14 @@ TTS). Players interact via voice in multiplayer.</td>
 <td>[RT] [T&amp;S]</td>
 <td>Fair Play Alliance / Thriving in Games Group. Ethical design
 forum.</td>
+</tr>
+<tr>
+<td>10:30-11:30</td>
+<td><strong>Tools Roundtable Day 2: Assets</strong></td>
+<td>314, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>Nvidia. Export/import, interchange, revision control, outsourcing,
+asset pipelines.</td>
 </tr>
 <tr>
 <td>10:30-11:30</td>
@@ -617,20 +991,44 @@ purchases.</td>
 </tr>
 <tr>
 <td>11:30-12:30</td>
-<td>AI Executive Panel: Agentic AI for Hyper-Personalized
-Experiences</td>
+<td><strong>DirectX State of the Union 2026</strong></td>
+<td>3001, West Hall</td>
+<td>[TOOLS]</td>
+<td>Microsoft. DirectStorage, asset pipeline optimizations, shader
+tooling, ML integration in DirectX.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td>Slang Shading Language: Console Backend</td>
+<td>3020, West Hall</td>
+<td>[TOOLS]</td>
+<td>NVIDIA, Enduring Games. Custom compiler backends for shading
+language — plugin/extension architecture.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>AI Executive Panel: Agentic AI for Hyper-Personalized
+Experiences</strong></td>
 <td>2020, West Hall</td>
-<td>[UGC]</td>
-<td>EPAM, SEGA, PlayStation, Xbox. Real-time player data analysis,
-dynamic AI content.</td>
+<td>[UGC] [LLM]</td>
+<td>EPAM, SEGA, PlayStation, Xbox. Dynamic in-game content tailored to
+players, adaptive storytelling, personalized support.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>Angry Birds Meets GenAI: Rovio + AWS</strong></td>
+<td>2024, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Rovio, AWS. GenAI (SageMaker, Bedrock) creating game assets for live
+Angry Birds game.</td>
 </tr>
 <tr>
 <td>11:30-12:30</td>
 <td>Art of the Possible: AI in Art</td>
 <td>2009, West Hall</td>
-<td>[UGC]</td>
-<td>Keywords Studios. AI pipelines for avatar creation, character
-generation — could power player-facing creation.</td>
+<td>[UGC] [LLM]</td>
+<td>Keywords Studios. AI-generated art, characters, video, personalized
+content, motion capture via text prompts.</td>
 </tr>
 <tr>
 <td>11:45-12:15</td>
@@ -662,9 +1060,33 @@ platform.</td>
 <td>11:50-12:20</td>
 <td>GenAI at Studios: Leadership, Tools, and Trust</td>
 <td>2006, West Hall</td>
-<td>[UGC]</td>
+<td>[UGC] [LLM]</td>
 <td>NYU, PRELOADED, Infinite Realms. GenAI in production — implications
 for player-facing AI.</td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td>VR 201: Essential Tools for Quest + LLM Integration</td>
+<td>2020, West Hall</td>
+<td>[UGC] [LLM] [TOOLS]</td>
+<td>Meta. Developer tools for Quest, implementing LLMs into VR
+games.</td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td>Press Start: Get Your PC Game Ready for Xbox in One Day</td>
+<td>3001, West Hall</td>
+<td>[TOOLS]</td>
+<td>Microsoft. GDK onboarding, identity/data/cross-platform service
+integration.</td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td>Supercharging Godot with AI: Path Tracing Integration</td>
+<td>3020, West Hall</td>
+<td>[TOOLS] [LLM]</td>
+<td>NVIDIA. Using AI coding assistants to add rendering features to
+Godot. Engine tool development.</td>
 </tr>
 <tr>
 <td>12:35-1:35</td>
@@ -689,12 +1111,28 @@ Jamboree</strong></td>
 <td>Player behavior data in production.</td>
 </tr>
 <tr>
+<td>2:00-2:30</td>
+<td><strong>Skillz Open Platform SDK</strong></td>
+<td>2011, West Hall</td>
+<td>[TOOLS]</td>
+<td>Skillz. Open SDK for competitive mobile games — competition,
+engagement tools, rewards.</td>
+</tr>
+<tr>
+<td>2:00-2:30</td>
+<td>How to Build Legally Compliant GenAI</td>
+<td>2009, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Lingotion. Real-time on-device AI voice/performance cloning for
+games. Legal and safety frameworks.</td>
+</tr>
+<tr>
 <td>2:30-2:50</td>
 <td>Next-Gen Game Creation: Multiplayer Economies &amp; AI World
 Models</td>
 <td>International Stage</td>
-<td>[UGC]</td>
-<td>Photon Engine. Multiplayer economies at scale.</td>
+<td>[UGC] [LLM]</td>
+<td>Photon Engine. Multiplayer economies and AI world models.</td>
 </tr>
 <tr>
 <td>2:30-4:15</td>
@@ -725,9 +1163,9 @@ community building.</td>
 <td><strong>Building an AI-Powered In-Game Advisor for Total War (NVIDIA
 ACE)</strong></td>
 <td>3020, West Hall</td>
-<td>[UGC]</td>
-<td>Creative Assembly, NVIDIA. On-device LLM advisor — player-AI
-text/voice interaction.</td>
+<td>[UGC] [LLM] [TOOLS]</td>
+<td>Creative Assembly, NVIDIA. On-device LLM advisor using NVIDIA ACE
+SDK. Answers player questions in character.</td>
 </tr>
 <tr>
 <td>3:40-4:40</td>
@@ -738,12 +1176,21 @@ text/voice interaction.</td>
 player communication.</td>
 </tr>
 <tr>
+<td>3:50-4:10</td>
+<td>Pipeline/Tracking Tools: Pains of Growth</td>
+<td>Future Tech Stage</td>
+<td>[TOOLS]</td>
+<td>Twisted Mountain Animation. Production management tool for tracking
+and pipeline integration.</td>
+</tr>
+<tr>
 <td>4:30-5:30</td>
 <td><strong>The Year in AI-Native Games</strong></td>
 <td>3004, West Hall</td>
-<td>[UGC]</td>
-<td>Fablegate, Hidden Door. Games where AI IS the content. <strong>Where
-the market is going.</strong></td>
+<td>[UGC] [LLM]</td>
+<td>Fablegate, Hidden Door. Survey of games where GenAI IS the core
+experience — vampire sandboxes to romance sims. <strong>Where the market
+is going.</strong></td>
 </tr>
 <tr>
 <td>4:30-5:30</td>
@@ -756,8 +1203,8 @@ the market is going.</strong></td>
 <td>4:30-5:30</td>
 <td>Game AI Roundtable Day 2</td>
 <td>308, South Hall</td>
-<td>[RT] [UGC]</td>
-<td>AI in games discussion.</td>
+<td>[RT] [UGC] [LLM]</td>
+<td>AI in games discussion including ML and LLM approaches.</td>
 </tr>
 <tr>
 <td>4:30-5:30</td>
@@ -772,9 +1219,9 @@ purchases.</td>
 <td><strong>What Good Are AI NPCs? Large-Scale Player
 Study</strong></td>
 <td>3020, West Hall</td>
-<td>[UGC]</td>
-<td>NVIDIA. First academically validated evidence on AI NPC
-interactions.</td>
+<td>[UGC] [LLM]</td>
+<td>NVIDIA, Meaning Machine. First academically validated evidence LLM
+NPCs boost engrossment. “Aggressive LLM wrangling.”</td>
 </tr>
 <tr>
 <td>5:00-6:00</td>
@@ -814,15 +1261,15 @@ full platform strategy at 3:40. The legal session on IP enforcement
 (11:30) covers the frameworks driving moderation purchases. If you have
 a Game Changer Pass, Gameplan B2B meetings start at 2:30.</p>
 </blockquote>
-<hr>
+<hr />
 <h2 id="thursday-march-12">Thursday, March 12</h2>
 <table>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 20%">
-<col style="width: 12%">
-<col style="width: 35%">
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
 </colgroup>
 <thead>
 <tr>
@@ -836,11 +1283,26 @@ a Game Changer Pass, Gameplan B2B meetings start at 2:30.</p>
 <tbody>
 <tr>
 <td>10:10-11:10</td>
-<td>AI + Games: Creativity in Production, Fun in Gameplay</td>
+<td><strong>AI + Games: More Creativity, Deeper Fun</strong></td>
 <td>2024, West Hall</td>
-<td>[UGC]</td>
-<td>Meshy AI. AI engine woven into gameplay for dynamic content
-creation.</td>
+<td>[UGC] [LLM]</td>
+<td>Meshy AI. 3D GenAI as dev copilot + AI woven into core gameplay for
+dynamic, surprising experiences.</td>
+</tr>
+<tr>
+<td>10:10-11:10</td>
+<td>One-Click AI 3D Asset Engine: Tripo</td>
+<td>3009, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Tripo AI. Text/image-to-3D generation for game-ready assets.</td>
+</tr>
+<tr>
+<td>10:30-10:50</td>
+<td>Studio Playbook for Generative AI</td>
+<td>Player Engagement Stage</td>
+<td>[UGC] [LLM]</td>
+<td>ComfyUI. GenAI production pipeline — shareable workflows for
+scalable game content creation.</td>
 </tr>
 <tr>
 <td>10:30-11:00</td>
@@ -850,6 +1312,14 @@ Insights</strong></td>
 <td>[T&amp;S] [UGC] [BIZ]</td>
 <td>Discord. Internal data on community growth, user behaviors,
 demographics.</td>
+</tr>
+<tr>
+<td>10:30-11:30</td>
+<td><strong>Tool Design Roundtable Day 2</strong></td>
+<td>306, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>Communication channels for new tool features, ticketing/request
+pipelines, team sizes.</td>
 </tr>
 <tr>
 <td>10:30-11:00</td>
@@ -884,13 +1354,55 @@ opportunity with prime target customers.</td>
 moderation.</td>
 </tr>
 <tr>
+<td>11:10-11:30</td>
+<td><strong>METATAILOR v2.5: Plugins for UE + Unity</strong></td>
+<td>Future Tech Stage</td>
+<td>[TOOLS]</td>
+<td>Official plugins for Unreal Engine and Unity. Round-trip asset
+transfers, automatic self-adaptive clothing fitting.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>AI Companion System in Peace Elite</strong></td>
+<td>2000, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Lightspeed (Tencent). LLM-powered AI companion with free chat,
+memory, emotional bonding, combat assistance. Custom LLM training.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>PICO Project Swan: Spatial Computing for Unity +
+Unreal</strong></td>
+<td>2024, West Hall</td>
+<td>[TOOLS]</td>
+<td>PICO. Adapting games for spatial computing using Unity, Unreal, and
+PICO Spatial tools.</td>
+</tr>
+<tr>
+<td>11:30-12:30</td>
+<td><strong>DirectX: Console-Level GPU Tools for Windows</strong></td>
+<td>2020, West Hall</td>
+<td>[TOOLS]</td>
+<td>Microsoft, AMD, Intel, Qualcomm. New GPU tooling features in
+DirectX, PIX, and partner tools.</td>
+</tr>
+<tr>
 <td>11:50-12:20</td>
 <td><strong>Short Form Futures: How AI Turned MMO Players into TikTok
 Creators</strong></td>
 <td>3004, West Hall</td>
-<td>[UGC]</td>
-<td>NetEase. AI-powered content creation in a live MMO. 5M daily swipes.
-<strong>Massive moderation need.</strong></td>
+<td>[UGC] [LLM]</td>
+<td>NetEase. AI extracts motion, swaps avatars, refilms scenes. 5M daily
+swipes. Players sell content. <strong>Massive moderation
+need.</strong></td>
+</tr>
+<tr>
+<td>11:50-12:50</td>
+<td>Teaching Games with Games X: Artificial Intelligence</td>
+<td>2014, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>UC Davis, others. How LLMs impact game design and play. History of
+games + AI.</td>
 </tr>
 <tr>
 <td>11:50-12:20</td>
@@ -941,20 +1453,36 @@ Drop in.</td>
 <td>12:45-1:45</td>
 <td><strong>AI-Powered UGC Creation in Peace Elite</strong></td>
 <td>2000, West Hall</td>
-<td>[UGC]</td>
-<td>Lightspeed Studios (Tencent). AI UGC at massive scale — AI building,
-avatars, text-to-3D. <strong>More AI UGC = more content to
-moderate.</strong></td>
+<td>[UGC] [LLM]</td>
+<td>Lightspeed (Tencent). 4 AI UGC workflows: text/image→buildings, AI
+avatars, text→3D scenes, 2D→3D relief. <strong>More AI UGC = more
+content to moderate.</strong></td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td><strong>Evolving DirectX for the ML Era</strong></td>
+<td>2024, West Hall</td>
+<td>[TOOLS] [LLM]</td>
+<td>Microsoft, AMD, Intel, NVIDIA. Linear algebra in HLSL, integrating
+ML models into game engines.</td>
+</tr>
+<tr>
+<td>12:45-1:45</td>
+<td><strong>Neural Shaders SDK</strong></td>
+<td>3020, West Hall</td>
+<td>[TOOLS]</td>
+<td>NVIDIA. RTX Neural Shading SDK for Vulkan and DirectX. Slang shader
+language + Nsight Graphics.</td>
 </tr>
 <tr>
 <td>1:50-2:50</td>
 <td><strong>Machine Learning Roundtable Day 2: Game Dev and
 Operations</strong></td>
 <td>308, South Hall</td>
-<td>[RT] [UGC] [T&amp;S]</td>
-<td><strong>Moderated by Mathieu Nayrolles (Supercell).</strong> ML in
-operations — moderation is an operational ML use case. Roundtable =
-direct conversation with Supercell.</td>
+<td>[RT] [UGC] [T&amp;S] [LLM]</td>
+<td><strong>Moderated by Mathieu Nayrolles (Supercell).</strong> How
+ML/GenAI impacted dev and ops in practice. Roundtable = direct
+conversation with Supercell.</td>
 </tr>
 <tr>
 <td>1:50-2:50</td>
@@ -969,9 +1497,18 @@ framing.</td>
 <td><strong>Discord Integration Best Practices: Voice Chat &amp; Social
 SDK</strong></td>
 <td>2011, West Hall</td>
-<td>[UGC] [T&amp;S]</td>
-<td>Discord. Integrating voice chat, rich presence, friend lists.
-<strong>Your moderation integration point.</strong></td>
+<td>[UGC] [T&amp;S] [TOOLS]</td>
+<td>Discord. Implementing Social SDK into games — voice chat, rich
+presence, friend lists. <strong>Your moderation integration
+point.</strong></td>
+</tr>
+<tr>
+<td>2:50-3:20</td>
+<td><strong>Asset Health Metrics for UE5</strong></td>
+<td>3009, West Hall</td>
+<td>[TOOLS]</td>
+<td>Virtuos. Custom UE5 asset validation tool — Nanite meshes,
+Blueprints, textures. Fixes content en masse.</td>
 </tr>
 <tr>
 <td>2:50-3:20</td>
@@ -988,6 +1525,14 @@ SDK</strong></td>
 <td>[RT] [T&amp;S]</td>
 <td>DLA Piper, Blizzard, Microsoft. Ask about COPPA/KOSA/DSA compliance
 and moderation obligations.</td>
+</tr>
+<tr>
+<td>3:10-4:10</td>
+<td>Ghost of Yotei: Overhauling the Writing Pipeline</td>
+<td>2005, West Hall</td>
+<td>[TOOLS]</td>
+<td>Sucker Punch. Custom editor tool from scratch — writers script
+directly into mission rigging.</td>
 </tr>
 <tr>
 <td>3:10-4:10</td>
@@ -1014,10 +1559,35 @@ PC, indie.</td>
 moderation. <strong>Game Changer Pass only.</strong></td>
 </tr>
 <tr>
+<td>2:30-2:50</td>
+<td><strong>Next Gen-Game Intelligence: Deploying Agentic
+AI</strong></td>
+<td>Future Tech Stage</td>
+<td>[UGC] [LLM]</td>
+<td>Perella. AI NPCs with persistent memory, adaptive in-world guidance,
+dynamic interactions.</td>
+</tr>
+<tr>
+<td>2:30-2:50</td>
+<td>Test Every Idea: Amplify Creative Exploration</td>
+<td>Player Engagement Stage</td>
+<td>[UGC] [LLM]</td>
+<td>Bezi. Natural language → playable game mechanics in minutes. Removes
+dev bottlenecks.</td>
+</tr>
+<tr>
+<td>3:40-4:40</td>
+<td><strong>State of RTX Rendering in UE5 (NvRTX branch)</strong></td>
+<td>3020, West Hall</td>
+<td>[TOOLS]</td>
+<td>NVIDIA. RTX Mega Geometry, ReSTIR PT, RTX Hair. Practical guidance
+for NVIDIA’s UE5 extensions.</td>
+</tr>
+<tr>
 <td>3:40-4:40</td>
 <td><strong>Gaming AI at Xbox: Responsible Innovation</strong></td>
 <td>2020, West Hall</td>
-<td>[UGC] [T&amp;S]</td>
+<td>[UGC] [T&amp;S] [LLM]</td>
 <td>Microsoft Xbox. Xbox Gaming Copilot. How players interact with AI
 features. Responsible AI design.</td>
 </tr>
@@ -1069,15 +1639,15 @@ and the GDCA at 6:30. In between, the ML Roundtable moderated by
 Supercell (1:50) and the Legal AMA (3:10) are your best content
 sessions.</p>
 </blockquote>
-<hr>
+<hr />
 <h2 id="friday-march-13">Friday, March 13</h2>
 <table>
 <colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 20%">
-<col style="width: 12%">
-<col style="width: 35%">
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 35%" />
 </colgroup>
 <thead>
 <tr>
@@ -1109,6 +1679,14 @@ sessions.</p>
 <td>211, South Hall</td>
 <td>[NET]</td>
 <td>Meet board members, industry update.</td>
+</tr>
+<tr>
+<td>9:30-10:30</td>
+<td>Tech Art Panel Discussion</td>
+<td>2014, West Hall</td>
+<td>[TOOLS]</td>
+<td>Ben Cloward, Meta, EA, Epic Games. ML-driven rigging, USD-first
+pipeline, tool UX, cloud pipeline.</td>
 </tr>
 <tr>
 <td>9:30-10:30</td>
@@ -1166,6 +1744,22 @@ Play</td>
 labels” for healthy play.</td>
 </tr>
 <tr>
+<td>10:50-11:20</td>
+<td>Borderlands 4: Dynamic Weather Systems in UE5</td>
+<td>2006, West Hall</td>
+<td>[TOOLS]</td>
+<td>Gearbox. Custom UE5 tools and render passes for climate
+simulation.</td>
+</tr>
+<tr>
+<td>10:50-11:50</td>
+<td><strong>Automated Testing Roundtable Day 3</strong></td>
+<td>306, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>CI/CD, unit tests, device farms. How studios use automated
+testing.</td>
+</tr>
+<tr>
 <td>10:50-11:50</td>
 <td>Accessibility at Scale: Doing More with Less</td>
 <td>304, South Hall</td>
@@ -1182,11 +1776,27 @@ platform.</td>
 </tr>
 <tr>
 <td>11:40-12:10</td>
+<td>Borderlands 4: Demystifying Clouds in UE5</td>
+<td>2006, West Hall</td>
+<td>[TOOLS]</td>
+<td>Disbelief. Custom UE5 tools for art-directable dynamic cloud
+system.</td>
+</tr>
+<tr>
+<td>11:40-12:10</td>
+<td><strong>Zenith: Diffusion Model-Driven Map Generation</strong></td>
+<td>2010, West Hall</td>
+<td>[UGC] [LLM]</td>
+<td>Blizzard. Diffusion models generating player-facing multi-layered
+game maps from 3D environments.</td>
+</tr>
+<tr>
+<td>11:40-12:10</td>
 <td>The Player-Centric Engine: CRM for Candy Crush Saga</td>
 <td>2016, West Hall</td>
-<td>[UGC] [BIZ]</td>
-<td>King. CRM as lifecycle system — adjacent to moderation in the player
-health stack.</td>
+<td>[UGC] [BIZ] [LLM]</td>
+<td>King. ML-driven personalized in-game experiences, adaptive
+onboarding, lifecycle campaigns.</td>
 </tr>
 <tr>
 <td>11:50-12:50</td>
@@ -1225,11 +1835,27 @@ after toxicity crisis.</td>
 </tr>
 <tr>
 <td>1:30-2:30</td>
+<td><strong>Tools Roundtable Day 3: Build</strong></td>
+<td>306, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>Nvidia. Build systems, caching, distribution, scalability, asset
+pipelines, patching.</td>
+</tr>
+<tr>
+<td>1:30-2:30</td>
 <td><strong>Analytics and Data Science Roundtable</strong></td>
 <td>304, South Hall</td>
 <td>[RT] [T&amp;S]</td>
 <td>IGDA. Player behavior data and decisions. <strong>These people
 measure toxicity and influence tool purchases.</strong></td>
+</tr>
+<tr>
+<td>1:40-2:40</td>
+<td>Sound Sensei: Custom Audio Pipeline Tool</td>
+<td>2003, West Hall</td>
+<td>[TOOLS]</td>
+<td>Sucker Punch. Automating asset integration and maintaining mix
+standards. Custom internal tool.</td>
 </tr>
 <tr>
 <td>1:40-2:40</td>
@@ -1257,11 +1883,19 @@ Requirements</strong></td>
 </tr>
 <tr>
 <td>2:50-3:50</td>
+<td><strong>Tool Design Roundtable Day 3</strong></td>
+<td>306, South Hall</td>
+<td>[RT] [TOOLS]</td>
+<td>User research methods for tools, dedicated UX researchers, design
+surprises.</td>
+</tr>
+<tr>
+<td>2:50-3:50</td>
 <td><strong>Game AI Roundtable Day 3: ML &amp; GenAI</strong></td>
 <td>314, South Hall</td>
-<td>[RT] [UGC]</td>
-<td>LLMs in games — uses, challenges, ethics. Directly relevant to AI
-moderation.</td>
+<td>[RT] [UGC] [LLM]</td>
+<td>Dedicated to ML and LLMs in games — uses, challenges, ethics.
+Directly relevant to AI moderation.</td>
 </tr>
 <tr>
 <td>3:00-4:00</td>
@@ -1288,14 +1922,14 @@ same time (adjacent room) is equally important. The NYT CrossPlay
 session at 11:50 shows a real build-vs-buy decision. End the week at the
 Kids’ Privacy forum at 2:50.</p>
 </blockquote>
-<hr>
+<hr />
 <h2 id="strategic-summary">Strategic Summary</h2>
 <h3 id="your-week-at-a-glance">Your Week at a Glance</h3>
 <table>
 <colgroup>
-<col style="width: 20%">
-<col style="width: 28%">
-<col style="width: 52%">
+<col style="width: 20%" />
+<col style="width: 28%" />
+<col style="width: 52%" />
 </colgroup>
 <thead>
 <tr>
@@ -1340,9 +1974,9 @@ architecture. Kids’ Privacy compliance. Speed Networking.</td>
 <h3 id="companies-to-seek-out">Companies to Seek Out</h3>
 <table>
 <colgroup>
-<col style="width: 37%">
-<col style="width: 20%">
-<col style="width: 41%">
+<col style="width: 37%" />
+<col style="width: 20%" />
+<col style="width: 41%" />
 </colgroup>
 <thead>
 <tr>
@@ -1413,9 +2047,9 @@ architecture. Kids’ Privacy compliance. Speed Networking.</td>
 <h3 id="people-to-track">People to Track</h3>
 <table>
 <colgroup>
-<col style="width: 24%">
-<col style="width: 18%">
-<col style="width: 57%">
+<col style="width: 24%" />
+<col style="width: 18%" />
+<col style="width: 57%" />
 </colgroup>
 <thead>
 <tr>
@@ -1482,7 +2116,15 @@ architecture. Kids’ Privacy compliance. Speed Networking.</td>
 </tr>
 <tr>
 <td>[UGC] UGC-Enabling Systems</td>
-<td>55</td>
+<td>75</td>
+</tr>
+<tr>
+<td>[LLM] LLM/GenAI for Players</td>
+<td>50</td>
+</tr>
+<tr>
+<td>[TOOLS] Engine Tooling / Plugins</td>
+<td>45</td>
 </tr>
 <tr>
 <td>[NET] Networking Events</td>
@@ -1490,14 +2132,137 @@ architecture. Kids’ Privacy compliance. Speed Networking.</td>
 </tr>
 <tr>
 <td>[RT] Roundtables/Forums</td>
-<td>15</td>
+<td>22</td>
 </tr>
 <tr>
 <td>[BIZ] Business Intelligence</td>
-<td>14</td>
+<td>17</td>
 </tr>
 </tbody>
 </table>
 
+<script>
+const activeTags = new Set();
+let allMode = true;
+let filterMode = 'or'; // 'or' = any match, 'and' = all must match
 
-</body></html>
+function toggleMode() {
+    const orBtn = document.querySelector('#mode-toggle [data-mode="or"]');
+    const andBtn = document.querySelector('#mode-toggle [data-mode="and"]');
+
+    if (filterMode === 'or') {
+        filterMode = 'and';
+        orBtn.classList.remove('active-mode');
+        andBtn.classList.add('active-mode');
+    } else {
+        filterMode = 'or';
+        andBtn.classList.remove('active-mode');
+        orBtn.classList.add('active-mode');
+    }
+
+    applyFilters();
+}
+
+function toggleFilter(btn) {
+    const tag = btn.dataset.tag;
+
+    if (tag === 'all') {
+        allMode = true;
+        activeTags.clear();
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.className = 'filter-btn';
+        });
+        btn.classList.add('active-all');
+    } else {
+        allMode = false;
+        const allBtn = document.querySelector('[data-tag="all"]');
+        allBtn.classList.remove('active-all');
+
+        const colorMap = {
+            'T&S': 'active-ts',
+            'UGC': 'active-ugc',
+            'NET': 'active-net',
+            'RT': 'active-rt',
+            'BIZ': 'active-biz',
+            'LLM': 'active-llm',
+            'TOOLS': 'active-tools'
+        };
+
+        if (activeTags.has(tag)) {
+            activeTags.delete(tag);
+            btn.classList.remove(colorMap[tag]);
+        } else {
+            activeTags.add(tag);
+            btn.classList.add(colorMap[tag]);
+        }
+
+        if (activeTags.size === 0) {
+            allMode = true;
+            allBtn.classList.add('active-all');
+        }
+    }
+
+    applyFilters();
+}
+
+function applyFilters() {
+    let visibleCount = 0;
+    let totalCount = 0;
+
+    document.querySelectorAll('table tbody tr').forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 4) return;
+
+        const tagCell = cells[3];
+        if (!tagCell) return;
+        const tagText = tagCell.textContent;
+
+        if (!tagText.match(/\[/)) return;
+
+        totalCount++;
+
+        if (allMode) {
+            row.classList.remove('hidden-row');
+            visibleCount++;
+        } else {
+            let match;
+            if (filterMode === 'or') {
+                // OR: show if ANY selected tag is present
+                match = false;
+                for (const tag of activeTags) {
+                    if (tagText.includes('[' + tag + ']')) {
+                        match = true;
+                        break;
+                    }
+                }
+            } else {
+                // AND: show only if ALL selected tags are present
+                match = true;
+                for (const tag of activeTags) {
+                    if (!tagText.includes('[' + tag + ']')) {
+                        match = false;
+                        break;
+                    }
+                }
+            }
+
+            if (match) {
+                row.classList.remove('hidden-row');
+                visibleCount++;
+            } else {
+                row.classList.add('hidden-row');
+            }
+        }
+    });
+
+    const countEl = document.getElementById('filter-count');
+    if (allMode) {
+        countEl.textContent = '';
+    } else {
+        const modeLabel = filterMode === 'or' ? 'matching any' : 'matching all';
+        countEl.textContent = visibleCount + ' of ' + totalCount + ' sessions (' + modeLabel + ')';
+    }
+}
+</script>
+</body>
+</html>
