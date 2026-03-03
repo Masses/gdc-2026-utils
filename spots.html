@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SF Conference Spots Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f13;color:#e0e0e0;line-height:1.6}
+a{color:inherit}
+
+/* ---- Header & Top Nav ---- */
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:1.5rem 1rem 1rem;text-align:center;border-bottom:3px solid #e94560;position:sticky;top:0;z-index:100}
+.header h1{font-size:1.6rem;color:#fff;margin-bottom:.2rem}
+.header>p{color:#a0a0b0;font-size:.85rem}
+.top-nav{display:flex;gap:.5rem;justify-content:center;margin-top:.8rem;flex-wrap:wrap}
+.top-nav a{background:#e94560;color:#fff;padding:.45rem .9rem;border-radius:2rem;text-decoration:none;font-size:.8rem;font-weight:600;transition:background .2s}
+.top-nav a:hover,.top-nav a.active{background:#ff6b81}
+.top-nav a.alt{background:#0a3d62}
+.top-nav a.alt:hover,.top-nav a.alt.active{background:#3c6382}
+.top-nav a.ent{background:#6c5ce7}
+.top-nav a.ent:hover,.top-nav a.ent.active{background:#a29bfe}
+
+/* ---- Sub Nav (within sections) ---- */
+.sub-nav{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem 0 .8rem;margin-bottom:.5rem;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-nav::-webkit-scrollbar{display:none}
+.sub-nav a{flex-shrink:0;padding:.35rem .75rem;border-radius:6px;font-size:.75rem;font-weight:600;text-decoration:none;border:1px solid #333;color:#aaa;background:#161622;white-space:nowrap;transition:all .15s}
+.sub-nav a:hover,.sub-nav a:focus{color:#fff;border-color:#e94560;background:#1e1030}
+.bar-section .sub-nav a:hover,.bar-section .sub-nav a:focus{border-color:#60a3bc;background:#0e1e2e}
+.ent-section .sub-nav a:hover,.ent-section .sub-nav a:focus{border-color:#6c5ce7;background:#1a162e}
+
+/* ---- Layout ---- */
+.container{max-width:1200px;margin:0 auto;padding:1.5rem}
+.section-header{padding:1.5rem 0 .5rem;border-bottom:2px solid #e94560;margin-bottom:.3rem}
+.section-header h2{font-size:1.5rem;color:#e94560}
+.section-header p{color:#888;font-size:.82rem;margin-top:.2rem}
+.event-block{margin-bottom:2.5rem;scroll-margin-top:140px}
+.event-title{background:linear-gradient(90deg,#1a1a2e,transparent);padding:.7rem 1rem;border-left:4px solid #e94560;margin-bottom:1rem;border-radius:0 8px 8px 0}
+.event-title h3{color:#fff;font-size:1.05rem}
+.event-title .loc{color:#a0a0b0;font-size:.78rem;margin-top:.15rem}
+.distance-group{margin-bottom:1.4rem}
+.distance-label{display:inline-block;background:#16213e;color:#e94560;padding:.25rem .7rem;border-radius:1rem;font-size:.72rem;font-weight:700;margin-bottom:.7rem;letter-spacing:.5px;text-transform:uppercase}
+
+/* ---- Cards ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;margin-bottom:.5rem}
+.card{background:#1a1a2e;border-radius:12px;overflow:hidden;border:1px solid #2a2a3e;transition:transform .2s,border-color .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);border-color:#e94560}
+
+/* Photo strip */
+.photo-strip{display:flex;gap:0;height:140px;position:relative;cursor:pointer;text-decoration:none}
+.photo-strip .ph{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#12121e;border-right:1px solid #222;color:#666;transition:background .2s;position:relative;overflow:hidden}
+.photo-strip .ph:last-child{border-right:none}
+.photo-strip .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(233,69,96,.08),rgba(108,92,231,.08));z-index:1}
+.photo-strip .ph .icon{font-size:1.6rem;z-index:2;margin-bottom:.2rem;filter:grayscale(.3)}
+.photo-strip .ph .lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#555;z-index:2}
+.photo-strip .view-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.75);color:#fff;padding:.4rem .8rem;border-radius:6px;font-size:.7rem;font-weight:600;opacity:0;transition:opacity .2s;z-index:10;pointer-events:none;white-space:nowrap}
+.photo-strip:hover .view-badge{opacity:1}
+.photo-strip:hover .ph{background:#181828}
+
+/* Card body */
+.card-body{padding:.9rem 1rem 1rem;flex:1;display:flex;flex-direction:column}
+.card-body h4{color:#fff;font-size:.95rem;margin-bottom:.3rem}
+.tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.4rem}
+.tag{font-size:.6rem;padding:.15rem .45rem;border-radius:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.tag.fc{background:#0a3d62;color:#60a3bc}
+.tag.fs{background:#3d0a62;color:#a360bc}
+.tag.dive{background:#4a1a0a;color:#e07040}
+.tag.cocktail{background:#0a4a3d;color:#40e0c0}
+.tag.beer{background:#4a3d0a;color:#e0c040}
+.tag.karaoke{background:#3d0a4a;color:#c040e0}
+.tag.drag{background:#4a0a3d;color:#e040c0}
+.address{color:#888;font-size:.78rem;margin-bottom:.4rem}
+.address::before{content:"\1F4CD "}
+.desc{font-size:.82rem;color:#b0b0c0;margin-bottom:.7rem;flex:1}
+.links{display:flex;gap:.4rem;flex-wrap:wrap}
+.links a{font-size:.72rem;padding:.3rem .65rem;border-radius:6px;text-decoration:none;font-weight:600;transition:all .15s;display:inline-flex;align-items:center;gap:.3rem}
+.links a:hover{opacity:.85;transform:translateY(-1px)}
+.links .maps{background:#34495e;color:#ecf0f1}
+.links .photos{background:#8e1c3b;color:#f5c6d0}
+
+/* ---- Section color overrides ---- */
+.bar-section .section-header{border-bottom-color:#0a3d62}
+.bar-section .section-header h2{color:#60a3bc}
+.bar-section .event-title{border-left-color:#60a3bc;background:linear-gradient(90deg,#0a1d2e,transparent)}
+.bar-section .distance-label{color:#60a3bc}
+.bar-section .card:hover{border-color:#60a3bc}
+.bar-section .photo-strip .ph::before{background:linear-gradient(135deg,rgba(96,163,188,.08),rgba(10,61,98,.08))}
+.ent-section .section-header{border-bottom-color:#6c5ce7}
+.ent-section .section-header h2{color:#6c5ce7}
+.ent-section .event-title{border-left-color:#6c5ce7;background:linear-gradient(90deg,#1a162e,transparent)}
+.ent-section .distance-label{background:#1a162e;color:#6c5ce7}
+.ent-section .card:hover{border-color:#6c5ce7}
+.ent-section .photo-strip .ph::before{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(61,10,74,.08))}
+
+/* ---- Note & Footer ---- */
+.note{background:#1e1e2e;border:1px solid #333;padding:.8rem 1rem;border-radius:8px;font-size:.78rem;color:#888;margin:1.5rem 0;text-align:center;line-height:1.5}
+footer{text-align:center;padding:1.5rem;color:#555;font-size:.72rem;border-top:1px solid #222;margin-top:2rem}
+
+/* ---- Mobile ---- */
+@media(max-width:700px){
+  .header h1{font-size:1.3rem}
+  .header{padding:1rem .8rem .8rem}
+  .cards{grid-template-columns:1fr}
+  .top-nav a{font-size:.72rem;padding:.35rem .65rem}
+  .photo-strip{height:110px}
+  .photo-strip .view-badge{opacity:1;font-size:.6rem;padding:.3rem .6rem}
+  .container{padding:1rem .8rem}
+  .event-block{scroll-margin-top:120px}
+}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>SF Conference Spots Guide</h1>
+  <p>Restaurants, bars &amp; nightlife near your events</p>
+  <div class="top-nav">
+    <a href="#restaurants">Restaurants</a>
+    <a href="#bars" class="alt">Bars</a>
+    <a href="#entertainment" class="ent">Entertainment</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ========== RESTAURANTS ========== -->
+<div id="restaurants">
+<div class="section-header">
+  <h2>Restaurants</h2>
+  <p>Non-chain picks organized by event location and walking distance</p>
+</div>
+<div class="sub-nav">
+  <a href="#rest-sunday">Sunday Night Event</a>
+  <a href="#rest-monday">Monday Night &mdash; Ballpark</a>
+  <a href="#rest-moscone">Event Center &mdash; Moscone</a>
+</div>
+
+<!-- SUNDAY -->
+<div class="event-block" id="rest-sunday">
+<div class="event-title">
+  <h3>Sunday Night Event</h3>
+  <div class="loc">2747 19th St, San Francisco, CA 94110 &mdash; Mission District</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/la-taqueria-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌮</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏪</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>La Taqueria</h4>
+    <div class="address">2889 Mission St, San Francisco, CA 94110</div>
+    <div class="desc">James Beard Award-winning legendary Mission taqueria. Famous for their super burritos (no rice, just perfectly grilled meats, beans, and salsa). The gold standard for Mission-style Mexican food since 1973.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=La+Taqueria+2889+Mission+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/la-taqueria-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/flour-water-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍝</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏛️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Flour + Water</h4>
+    <div class="address">2401 Harrison St, San Francisco, CA 94110</div>
+    <div class="desc">Michelin Bib Gourmand Italian. Handmade pasta and Neapolitan-style pizza in an industrial-chic space. Daily-changing menu spotlighting Northern California ingredients. Reservations recommended.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Flour+Water+2401+Harrison+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/flour-water-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/panchitas-pupuseria-and-restaurant-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🫓</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏠</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Panchita's Pupuseria</h4>
+    <div class="address">3091 16th St, San Francisco, CA 94103</div>
+    <div class="desc">Family-run Salvadoran spot serving pillowy handmade pupusas and hearty plates. Unpretentious, authentic, and beloved by locals. Open late on weekends (until 2:30 AM Fri-Sat).</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Panchitas+Pupuseria+3091+16th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/panchitas-pupuseria-and-restaurant-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/foreign-cinema-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎬</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌿</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Foreign Cinema</h4>
+    <div class="address">2534 Mission St, San Francisco, CA 94110</div>
+    <div class="desc">Iconic Mission institution since 1999. Classic films projected on a courtyard wall while you enjoy California-Mediterranean cuisine under the stars. Stunning exposed-beam interior with 18-foot ceilings.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Foreign+Cinema+2534+Mission+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/foreign-cinema-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/marufuku-ramen-san-francisco-5" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍜</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏯</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Marufuku Ramen</h4>
+    <div class="address">1581 Webster St, San Francisco, CA 94115 (Japantown)</div>
+    <div class="desc">Rich, authentic Hakata-style tonkotsu ramen in SF's historic Japantown. Silky 20-hour pork broth, perfectly thin noodles, and melt-in-your-mouth chashu. Worth the trip.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Marufuku+Ramen+1581+Webster+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/marufuku-ramen-san-francisco-5" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/kokkari-estiatorio-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🐑</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏛️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Kokkari Estiatorio</h4>
+    <div class="address">200 Jackson St, San Francisco, CA 94111 (Financial District)</div>
+    <div class="desc">Elegant Greek fine dining with a warm, rustic taverna atmosphere. Wood-grilled lamb chops, whole branzino, and an exceptional wine list. Crackling fireplace, exposed wood beams, impeccable service.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Kokkari+Estiatorio+200+Jackson+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/kokkari-estiatorio-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+<!-- MONDAY -->
+<div class="event-block" id="rest-monday">
+<div class="event-title">
+  <h3>Monday Night Event at the Ballpark</h3>
+  <div class="loc">Oracle Park, 24 Willie Mays Plaza, San Francisco, CA</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/cafe-okawari-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍱</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">☕</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Cafe Okawari</h4>
+    <div class="address">236 Townsend St, San Francisco, CA 94107</div>
+    <div class="desc">Japanese cafe specializing in incredible katsu chicken sandwiches, Japanese curry, and spicy tuna bowls. Housemade yuzu sodas and hojicha lattes. Quick, fresh, unique. Weekdays only.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Cafe+Okawari+236+Townsend+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/cafe-okawari-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/taksim-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍖</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🔥</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Taksim</h4>
+    <div class="address">564 4th St, San Francisco, CA 94107</div>
+    <div class="desc">Refined Turkish-Mediterranean cuisine with wood-fired dishes. From the Lokma team, bringing Istanbul flavors to California ingredients in an industrial-chic SoMa space. Don't miss the kebabs and mezes.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Taksim+564+4th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/taksim-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/house-of-tadu-ethiopian-kitchen-san-francisco-4" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍛</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌍</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>House of Tadu Ethiopian Kitchen</h4>
+    <div class="address">1130 4th St, San Francisco, CA 94158 (Mission Bay)</div>
+    <div class="desc">Vibrant Ethiopian kitchen with spongy injera, rich stews (misir wot, kik alicha), and vegetable-forward plates. Great for sharing with a group. Also serves Ethiopian beer and coffee.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=House+of+Tadu+Ethiopian+Kitchen+1130+4th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/house-of-tadu-ethiopian-kitchen-san-francisco-4" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/saison-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🔥</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">⭐</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Saison</h4>
+    <div class="address">178 Townsend St, San Francisco, CA 94107</div>
+    <div class="desc">Two Michelin-starred temple of wood-fire cooking. Multi-course tasting menu ($328+) highlighting California ingredients with primal fire techniques. One of SF's most celebrated restaurants. Reservation required.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Saison+178+Townsend+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/saison-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/el-farolito-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌮</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌙</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>El Farolito</h4>
+    <div class="address">2779 Mission St, San Francisco, CA 94110</div>
+    <div class="desc">Legendary Mission taqueria open until the wee hours (1:45 AM weekdays, 2:45 AM Fri). Massive super burritos and perfectly charred al pastor tacos. No-frills counter service, maximum flavor.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=El+Farolito+2779+Mission+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/el-farolito-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/state-bird-provisions-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🐦</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎨</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>State Bird Provisions</h4>
+    <div class="address">1529 Fillmore St, San Francisco, CA 94115 (Western Addition)</div>
+    <div class="desc">Michelin-starred creative California cuisine served dim-sum style on carts. Quirky, inventive small plates you choose as they pass by. The state bird (quail) dish is a must. Walk-ins welcome at the bar.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=State+Bird+Provisions+1529+Fillmore+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/state-bird-provisions-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+<!-- MOSCONE -->
+<div class="event-block" id="rest-moscone">
+<div class="event-title">
+  <h3>Event Center</h3>
+  <div class="loc">Moscone Center, 747 Howard St, San Francisco, CA &mdash; SoMa / Yerba Buena</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/joyride-pizza-yerba-buena-gardens-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍕</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌇</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Joyride Pizza</h4>
+    <div class="address">730 Howard St, San Francisco, CA 94103 (Yerba Buena Gardens)</div>
+    <div class="desc">Detroit-style pizza perched above Moscone Center in Yerba Buena Gardens. Floor-to-ceiling windows overlooking downtown. Open-fire ovens turn out crispy-edged, cheesy pizzettas. 3-minute walk from Moscone.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Joyride+Pizza+730+Howard+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/joyride-pizza-yerba-buena-gardens-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/fang-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🥢</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏮</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Fang</h4>
+    <div class="address">660 Howard St, San Francisco, CA 94105</div>
+    <div class="desc">Upscale Chinese fine dining across the street from Moscone. Sister restaurant of House of Nanking, reimagining Chinese classics in a sleek, modern three-level space. Market-driven menu with inventive presentations.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Fang+660+Howard+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/fang-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/little-skillet-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍗</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏚️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Little Skillet</h4>
+    <div class="address">360 Ritch St, San Francisco, CA 94107</div>
+    <div class="desc">Southern soul food done right. Golden fried chicken, fluffy waffles, crispy po'boys, and biscuits with generous portions. Counter service with big flavors in a no-fuss SoMa space.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Little+Skillet+360+Ritch+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/little-skillet-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/zuni-caf%C3%A9-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍗</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">✨</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Zuni Cafe</h4>
+    <div class="address">1658 Market St, San Francisco, CA 94102</div>
+    <div class="desc">Legendary SF institution since 1979, famous for its wood-oven roast chicken for two with bread salad. Michelin Bib Gourmand. Copper bar, soaring windows, and a buzzy crowd. A must-do SF dining experience.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Zuni+Cafe+1658+Market+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/zuni-caf%C3%A9-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/burma-love-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍲</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌏</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fc">Fast Casual</span></div>
+    <h4>Burma Love</h4>
+    <div class="address">211 Valencia St, San Francisco, CA 94103</div>
+    <div class="desc">Wildly popular Burmese restaurant with tea leaf salad, coconut chicken noodles, and samusa soup. From the Burma Superstar family. Vibrant, aromatic, and unlike anything else in the city.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Burma+Love+211+Valencia+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/burma-love-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/nopa-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌿</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🔥</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag fs">Fancy Sit Down</span></div>
+    <h4>Nopa</h4>
+    <div class="address">560 Divisadero St, San Francisco, CA 94117</div>
+    <div class="desc">Beloved California cuisine restaurant with a roaring wood-fired oven. Known for its famous hamburger, seasonal dishes, and vibrant late-night scene (kitchen open until midnight). Warm, bustling atmosphere.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Nopa+560+Divisadero+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/nopa-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- ========== BARS ========== -->
+<div id="bars" class="bar-section">
+<div class="section-header">
+  <h2>Bars</h2>
+  <p>Dive bars, craft cocktails &amp; beer havens near your events</p>
+</div>
+<div class="sub-nav">
+  <a href="#bar-sunday">Sunday Night Event</a>
+  <a href="#bar-monday">Monday Night &mdash; Ballpark</a>
+  <a href="#bar-moscone">Event Center &mdash; Moscone</a>
+</div>
+
+<!-- SUNDAY BARS -->
+<div class="event-block" id="bar-sunday">
+<div class="event-title">
+  <h3>Sunday Night Event</h3>
+  <div class="loc">2747 19th St, San Francisco, CA 94110 &mdash; Mission District</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/benders-bar-and-grill-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎸</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌙</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Bender's Bar &amp; Grill</h4>
+    <div class="address">806 S Van Ness Ave, San Francisco, CA 94110</div>
+    <div class="desc">Classic Mission dive with pool, pinball, and rock 'n' roll blasting from the jukebox. Walls covered in local art, kitchen serving burgers and tater tots. Cheap strong drinks and no pretension. Open until 2 AM.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Benders+Bar+Grill+806+S+Van+Ness+Ave+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/benders-bar-and-grill-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/trick-dog-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍸</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌆</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Trick Dog</h4>
+    <div class="address">3010 20th St, San Francisco, CA 94110</div>
+    <div class="desc">Award-winning cocktail bar with a menu that changes themes regularly. Nice enough to impress but casual enough for a quick drink. Open until 2 AM Fri-Sat. One of the world's best bars.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Trick+Dog+3010+20th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/trick-dog-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/shotwells-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏚️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Shotwell's</h4>
+    <div class="address">3349 20th St, San Francisco, CA 94110</div>
+    <div class="desc">Over 100 years old, this corner saloon serves craft beer and wine only in a dark, intimate setting. Excellent rotating tap list, pool table, and trivia nights. Never crowded, always welcoming. $1 off taps daily at happy hour.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Shotwells+3349+20th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/shotwells-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/zeitgeist-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">☀️</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌳</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Zeitgeist</h4>
+    <div class="address">199 Valencia St, San Francisco, CA 94103</div>
+    <div class="desc">Legendary SF beer garden and dive bar with 40+ taps, a huge sunny backyard with communal picnic tables, and a no-nonsense attitude. A San Francisco legacy business. Cash-friendly, dog-friendly, pretension-free.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Zeitgeist+199+Valencia+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/zeitgeist-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/true-laurel-san-francisco-3" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌿</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">✨</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>True Laurel</h4>
+    <div class="address">753 Alabama St, San Francisco, CA 94110</div>
+    <div class="desc">From the Lazy Bear team. Ranked #17 on North America's 50 Best Bars. Culinary cocktails using fermented ingredients, clarified milk punches, and unexpected pairings. Moody, intimate space.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=True+Laurel+753+Alabama+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/true-laurel-san-francisco-3" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/cellarmaker-brewing-company-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍻</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏭</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Cellarmaker Brewing</h4>
+    <div class="address">3193 Mission St, San Francisco, CA 94110</div>
+    <div class="desc">Cult-following brewery with constantly rotating IPAs, stouts, and lagers. "House of Pizza" serves pies alongside pints. "CA Craft Brewery of the Year." Indoor &amp; outdoor seating.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Cellarmaker+Brewing+3193+Mission+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/cellarmaker-brewing-company-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/specs-twelve-adler-museum-cafe-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎭</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌙</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Specs' Twelve Adler Museum Cafe</h4>
+    <div class="address">12 William Saroyan Pl, San Francisco, CA 94133 (North Beach)</div>
+    <div class="desc">Legendary North Beach dive packed floor-to-ceiling with bizarre memorabilia. Cheap drinks, zero pretension, pure old-school SF. Hidden down an alley off Columbus Ave. Cash only.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Specs+Twelve+Adler+Museum+Cafe+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/specs-twelve-adler-museum-cafe-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/smugglers-cove-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🏴‍☠️</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🥃</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Smuggler's Cove</h4>
+    <div class="address">650 Gough St, San Francisco, CA 94102 (Hayes Valley)</div>
+    <div class="desc">World-famous tiki and rum bar with 400+ rums and a three-level pirate ship interior. Flaming cocktails, fog machines, and serious craft. One of the best cocktail bars on Earth.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Smugglers+Cove+650+Gough+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/smugglers-cove-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎵</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Toronado</h4>
+    <div class="address">547 Haight St, San Francisco, CA 94117 (Lower Haight)</div>
+    <div class="desc">Legendary craft beer institution since 1987. 40-50 rotating taps of Belgian ales, IPAs, sours, and rare releases. No-nonsense bartenders, loud jukebox. Cash only. Open until 2 AM.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Toronado+547+Haight+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+<!-- MONDAY BARS -->
+<div class="event-block" id="bar-monday">
+<div class="event-title">
+  <h3>Monday Night Event at the Ballpark</h3>
+  <div class="loc">Oracle Park, 24 Willie Mays Plaza, San Francisco, CA</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/hi-dive-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌊</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">⛵</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Hi Dive</h4>
+    <div class="address">Pier 28&frac12;, The Embarcadero, San Francisco, CA 94105</div>
+    <div class="desc">One of the only dive bars in SF with actual bay views. Perched on a pier, with legendary spicy Bloody Marys, fish tacos, and garlic fries. Old-school waterfront vibes with a patio overlooking the water.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Hi+Dive+Pier+28+Embarcadero+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/hi-dive-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/alchemist-bar-and-lounge-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">⚗️</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏰</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Alchemist Bar &amp; Lounge</h4>
+    <div class="address">679 3rd St, San Francisco, CA 94107</div>
+    <div class="desc">Hidden second-floor speakeasy one block from Oracle Park. Victorian steampunk-inspired decor with house-made infusions and handcrafted syrups. Open until 2 AM Fri-Sat.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Alchemist+Bar+Lounge+679+3rd+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/alchemist-bar-and-lounge-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/black-hammer-brewing-company-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎨</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Black Hammer Brewing</h4>
+    <div class="address">544 Bryant St, San Francisco, CA 94107</div>
+    <div class="desc">Award-winning SoMa brewery with 16 house beers on tap &mdash; "CA Craft Brewery of the Year." Craft empanadas from El Sur. Dog-friendly with sunny outdoor seating. 22 competition medals.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Black+Hammer+Brewing+544+Bryant+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/black-hammer-brewing-company-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/hotel-utah-saloon-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌙</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Hotel Utah Saloon</h4>
+    <div class="address">500 4th St, San Francisco, CA 94107</div>
+    <div class="desc">One of SF's oldest bars since 1908. Legendary dive with live music most nights. Whoopi Goldberg and Robin Williams both performed on its tiny stage. Cheap drinks, palpable history.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Hotel+Utah+Saloon+500+4th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/hotel-utah-saloon-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/cava%C3%B1a-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🌅</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🔥</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Cava&ntilde;a</h4>
+    <div class="address">138 King St, San Francisco, CA 94107 (Hotel VIA rooftop)</div>
+    <div class="desc">Rooftop bar in Mission Bay with stunning panoramic views of the Bay, downtown skyline, and Oracle Park. Outdoor patio with firepits, craft cocktails, and a sceney vibe.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Cavana+rooftop+138+King+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/cava%C3%B1a-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/21st-amendment-brewery-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍻</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏗️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>21st Amendment Brewery</h4>
+    <div class="address">563 2nd St, San Francisco, CA 94107</div>
+    <div class="desc">Local brewpub two blocks from Oracle Park since 2000. Try "Hell or High Watermelon" wheat or "Brew Free! Or Die" IPA. Industrial loft with exposed brick. Elevated pub fare.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=21st+Amendment+Brewery+563+2nd+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/21st-amendment-brewery-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/li-po-cocktail-lounge-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🐉</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏮</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Li Po Cocktail Lounge</h4>
+    <div class="address">916 Grant Ave, San Francisco, CA 94108 (Chinatown)</div>
+    <div class="desc">Legendary Chinatown dive since 1937. Cavernous basement with a golden Buddha, red lanterns, and the famous Chinese Mai Tai. Anthony Bourdain's favorite. Cash only, pure atmosphere.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Li+Po+Cocktail+Lounge+916+Grant+Ave+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/li-po-cocktail-lounge-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/abv-san-francisco-2" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍸</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌃</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>ABV</h4>
+    <div class="address">3174 16th St, San Francisco, CA 94103 (Mission)</div>
+    <div class="desc">Bright, casual Mission cocktail destination with creative spirit-forward cocktails. Rich bites like mapo "sloppy joes" and kimchi fritters. Open Mon-Fri 2 PM to 2 AM. Approachable and inventive.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=ABV+3174+16th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/abv-san-francisco-2" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎵</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Toronado</h4>
+    <div class="address">547 Haight St, San Francisco, CA 94117 (Lower Haight)</div>
+    <div class="desc">The OG American craft beer bar, going strong since 1987. 40-50 taps of Belgian ales, rare sours, and West Coast IPAs. Grab a sausage from Rosamunde next door. Cash only. Open until 2 AM daily.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Toronado+547+Haight+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+<!-- MOSCONE BARS -->
+<div class="event-block" id="bar-moscone">
+<div class="event-title">
+  <h3>Event Center</h3>
+  <div class="loc">Moscone Center, 747 Howard St, San Francisco, CA &mdash; SoMa / Yerba Buena</div>
+</div>
+
+<div class="distance-group">
+<div class="distance-label">5-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/tempest-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎱</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌙</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Tempest</h4>
+    <div class="address">431 Natoma St, San Francisco, CA 94103</div>
+    <div class="desc">Hidden SoMa dive down Natoma alley, one block from Moscone. Open since 1986 with pool table, rotating taps, and comfort food from Box Kitchen. Cheap drinks, energetic crowd, open until 2 AM.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Tempest+431+Natoma+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/tempest-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/local-edition-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">📰</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎷</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Local Edition</h4>
+    <div class="address">691 Market St, San Francisco, CA 94105</div>
+    <div class="desc">Subterranean speakeasy beneath Market Street channeling 1920s press room glamour. Live jazz and swing nightly with no cover. Inspired by SF's newspaper heyday. Open until 2 AM Thu-Sat.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Local+Edition+691+Market+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/local-edition-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/thirsty-bear-brewing-company-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍻</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🐕</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Thirsty Bear Brewing</h4>
+    <div class="address">661 Howard St, San Francisco, CA 94105</div>
+    <div class="desc">Organic microbrewery right next to Moscone with 24+ house-brewed beers on tap. Spanish tapas menu pairs perfectly with their ales. One of SF's original craft breweries since 1996.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Thirsty+Bear+Brewing+661+Howard+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/thirsty-bear-brewing-company-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">10-minute walk</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/hotel-utah-saloon-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏨</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Hotel Utah Saloon</h4>
+    <div class="address">500 4th St, San Francisco, CA 94107</div>
+    <div class="desc">SF's oldest bar since 1908 with live music most nights. Historic venue where comedy and music legends got their start. Intimate room, cheap drinks, real character.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Hotel+Utah+Saloon+500+4th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/hotel-utah-saloon-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/novela-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">📚</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌃</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Novela</h4>
+    <div class="address">662 Mission St, San Francisco, CA 94105</div>
+    <div class="desc">Literary-themed cocktail lounge in the heart of Yerba Buena. Upscale study vibes with book-lined walls and inventive cocktails. Perfect post-conference wind-down. Named after literary characters.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Novela+662+Mission+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/novela-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/black-hammer-brewing-company-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏗️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Black Hammer Brewing</h4>
+    <div class="address">544 Bryant St, San Francisco, CA 94107</div>
+    <div class="desc">"CA Craft Brewery of the Year." 16 house beers from Rosemary IPA to Belgian Blonde. Craft empanadas, outdoor seating, and a laid-back neighborhood feel. Dog and child friendly.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Black+Hammer+Brewing+544+Bryant+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/black-hammer-brewing-company-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="distance-group">
+<div class="distance-label">20-minute car ride</div>
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/li-po-cocktail-lounge-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🐉</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏮</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag dive">Dive Bar</span></div>
+    <h4>Li Po Cocktail Lounge</h4>
+    <div class="address">916 Grant Ave, San Francisco, CA 94108 (Chinatown)</div>
+    <div class="desc">Cavernous Chinatown dive since 1937 with a golden Buddha, red lanterns, and the famous Chinese Mai Tai. A San Francisco legend and Anthony Bourdain favorite. Cash only.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Li+Po+Cocktail+Lounge+916+Grant+Ave+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/li-po-cocktail-lounge-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/smugglers-cove-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🏴‍☠️</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🥃</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag cocktail">Fancy Cocktail</span></div>
+    <h4>Smuggler's Cove</h4>
+    <div class="address">650 Gough St, San Francisco, CA 94102 (Hayes Valley)</div>
+    <div class="desc">World-famous tiki and rum bar with 400+ rums. Three-level pirate ship interior with flaming cocktails and fog machines. Regularly ranked among the world's best bars.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Smugglers+Cove+650+Gough+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/smugglers-cove-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🍺</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎵</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag beer">Great Beer</span></div>
+    <h4>Toronado</h4>
+    <div class="address">547 Haight St, San Francisco, CA 94117 (Lower Haight)</div>
+    <div class="desc">The OG American craft beer bar since 1987. 40-50 taps of Belgian ales, rare sours, and West Coast IPAs. Grab a sausage from Rosamunde next door. Cash only. Open 11:30 AM - 2 AM daily.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Toronado+547+Haight+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/toronado-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+</div>
+
+<!-- ========== ENTERTAINMENT ========== -->
+<div id="entertainment" class="ent-section">
+<div class="section-header">
+  <h2>Entertainment</h2>
+  <p>Spontaneous night activities &mdash; karaoke &amp; drag shows across SF</p>
+</div>
+<div class="sub-nav">
+  <a href="#ent-karaoke">Karaoke</a>
+  <a href="#ent-drag">Drag Shows</a>
+</div>
+
+<!-- KARAOKE -->
+<div class="event-block" id="ent-karaoke">
+<div class="event-title">
+  <h3>Karaoke</h3>
+  <div class="loc">Options across San Francisco</div>
+</div>
+
+<div class="distance-group">
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/pandora-karaoke-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🎶</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag karaoke">Private Rooms</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>Pandora Karaoke</h4>
+    <div class="address">50 Mason St, San Francisco, CA 94102 (Union Square)</div>
+    <div class="desc">14 themed private karaoke rooms for groups of 6-35 people. Disco balls, phone-ordering for sake bombs, and an extensive song catalog. Small rooms from $60/hr. Open Mon-Sat until 2 AM. Reservations recommended.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Pandora+Karaoke+50+Mason+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/pandora-karaoke-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/bow-bow-cocktail-lounge-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🏮</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag karaoke">Public / Shared Mic</span><span class="tag dive">Divey</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>Bow Bow Cocktail Lounge</h4>
+    <div class="address">1155 Grant Ave, San Francisco, CA 94133 (Chinatown)</div>
+    <div class="desc">Narrow, red-hued Chinatown dive where everyone shares the mic. Karaoke every night since 1986, potent drinks, free spiced peanuts. The diviest karaoke in SF &mdash; raw, fun, unforgettable. Open until 2 AM nightly.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Bow+Bow+Cocktail+Lounge+1155+Grant+Ave+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/bow-bow-cocktail-lounge-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/silver-cloud-restaurant-and-karaoke-bar-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🍽️</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag karaoke">Public / Shared Mic</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>Silver Cloud Restaurant &amp; Karaoke</h4>
+    <div class="address">1994 Lombard St, San Francisco, CA 94123 (Marina)</div>
+    <div class="desc">Family-run since 1979. Karaoke 7 nights a week starting at 9 PM with a full restaurant and friendly crowd. Open until 2 AM every night. The Marina's go-to for a fun, unpretentious sing-along.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Silver+Cloud+Restaurant+Karaoke+1994+Lombard+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/silver-cloud-restaurant-and-karaoke-bar-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/the-mint-karaoke-lounge-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">🎤</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌈</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag karaoke">Public / Shared Mic</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>The Mint</h4>
+    <div class="address">1942 Market St, San Francisco, CA 94102 (Duboce Triangle)</div>
+    <div class="desc">SF's most beloved public karaoke bar. Everyone sings for the whole room &mdash; strangers become your biggest fans. Friendly, inclusive crowd, strong drinks, and an electric atmosphere. A rite of passage. Open nightly until 2 AM.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=The+Mint+Karaoke+1942+Market+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/the-mint-karaoke-lounge-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+<!-- DRAG SHOWS -->
+<div class="event-block" id="ent-drag">
+<div class="event-title">
+  <h3>Drag Shows</h3>
+  <div class="loc">Options across San Francisco</div>
+</div>
+
+<div class="distance-group">
+<div class="cards">
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/oasis-san-francisco-3" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">💃</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌟</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag drag">Drag &amp; Cabaret</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>OASIS</h4>
+    <div class="address">298 11th St, San Francisco, CA 94103 (SoMa)</div>
+    <div class="desc">SF's premier drag and cabaret venue in an 8,000 sq ft converted bathhouse. Voted Best Drag Show &amp; Best Cabaret. Local and touring drag stars, DJs, and dancing. Open until 2 AM Fri-Sat.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=OASIS+298+11th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/oasis-san-francisco-3" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/beaux-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">💃</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌈</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag drag">Drag &amp; Dance Club</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>Beaux</h4>
+    <div class="address">2344 Market St, San Francisco, CA 94114 (Castro)</div>
+    <div class="desc">Castro dance club with drag shows, DJs, and go-go dancers nightly until 2 AM. Weekend drag brunches at 12:30 &amp; 2:30 PM. Monthly "Big Top" shows feature RuPaul's Drag Race stars. Themed party every night at 9 PM.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Beaux+2344+Market+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/beaux-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <a class="photo-strip" href="https://www.yelp.com/biz_photos/the-lookout-san-francisco" target="_blank" title="View photos on Yelp">
+    <div class="ph"><span class="icon">💃</span><span class="lbl">Interior</span></div>
+    <div class="ph"><span class="icon">🌅</span><span class="lbl">Exterior</span></div>
+    <span class="view-badge">View Photos on Yelp &rarr;</span>
+  </a>
+  <div class="card-body">
+    <div class="tags"><span class="tag drag">Drag &amp; DJ Bar</span><span class="tag dive">Open Until 2 AM</span></div>
+    <h4>The Lookout</h4>
+    <div class="address">3600 16th St, San Francisco, CA 94114 (Castro)</div>
+    <div class="desc">Iconic Castro bar with a balcony overlooking Market &amp; 16th. Drag brunches with rotating performers, DJ nights every Friday 9 PM - 2 AM, and a welcoming, energetic atmosphere.</div>
+    <div class="links">
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Lookout+Bar+3600+16th+St+San+Francisco+CA" target="_blank">&#x1F4CD; Google Maps</a>
+      <a class="photos" href="https://www.yelp.com/biz_photos/the-lookout-san-francisco" target="_blank">&#x1F4F7; Photos</a>
+    </div>
+  </div>
+</div>
+</div></div>
+</div>
+
+</div>
+
+<div class="note">
+  All venues verified as operating as of early 2026. Hours may change &mdash; check Google Maps or call ahead. Click the photo strip on any card or the &#x1F4F7; Photos button to see interior &amp; exterior photos on Yelp.
+</div>
+
+</div>
+
+<footer>
+  SF Conference Spots Guide &mdash; Built March 2026
+</footer>
+
+</body>
+</html>
